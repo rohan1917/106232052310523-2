@@ -25,7 +25,7 @@
   </head>
 
   
-  <body>
+  <body onload="loadInitialData()">
 
 <!-- Mobile Toogler Button For Adding A New Item -->
 <div class="add__new__btn__mobile__only ">
@@ -66,7 +66,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary" onclick="handleSubmit()">Save changes</button>
       </div>
     </div>
   </div>
@@ -152,7 +152,7 @@
 
 
     <!-- random approach juz to show the card on the screen -->
- <div class='col-md-6 col-lg-4 mt-3'  id=${id} key=${id}>
+ <!-- <div class='col-md-6 col-lg-4 mt-3'  id=${id} key=${id}>
         <div class='card shadow task__card'>
             <div class='card-header d-flex gap-2 justify-content-end task__card__header'>
                 <button type='button' class='btn btn-outline-info mr-2' name=${id}><i class='fas fa-pencil-alt'></i></button>
@@ -174,11 +174,11 @@
                 data-bs-target="#showTask">Open Task</button>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <!--random modal demo  -->
-     <div id=${id}>
+     <!-- <div id=${id}>
         ${
                     url && 
                      `<img src=${url} alt='card image class='img-fluid rounded place__holder__image mb-3'  />`
@@ -186,7 +186,7 @@
                 <strong class='text-sm text-muted'>Created on ${date.toDateString()}</strong> 
                   <h4 class='my-2'>${title}</h4>  
           <p class='lead text-muted'>${description}</p>  
-    </div>
+    </div> -->
 
     <!-- custom JS File -->
     <script src="index.js"></script>

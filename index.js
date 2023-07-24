@@ -115,7 +115,31 @@ const loadInitialData = () => {
 
 
  state.taskList.map((cardDate) => {
-    taskContents.insertAdjacentHTML()
- })
- 
+    taskContents.insertAdjacentHTML("beforeend", htmlTaskContent(cardDate));
+ });
 };
+
+
+const handleSubmit = () =>{
+    const id = `${Date.now()}`
+    const input = {
+        url: document.getElementById('imageUrl').value,
+        title: document.getElementById('taskTitle').value,
+        description: document.getElementById('taskDescription').value,
+        type: document.getElementById('tags').value,
+    };
+
+    if(input.title === '' || input.description=== '' || input.type===''){
+        return alert("Please fill out the all the necessary fileds!");
+    }
+    taskContents.insertAdjacentHTML(
+        "beforeend", htmlTaskContent({...input, id, })
+    );
+
+    state.taskList.push({...input, id});
+    updateLocalStorage();
+}
+
+
+// Default img
+// https://tse3.mm.bing.net/th?id=OIP.FjLkalx51D8xJcpixUGJywHaE8&pid=Api&P=0&h=180
