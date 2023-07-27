@@ -134,7 +134,8 @@
         <div class="col-md-6">
           <div class="input-group flex-nowrap shadow-lg rounded">
            
-            <input type="search" class="form-control" placeholder="Search Task"  aria-describedby="addon-wrapping">
+            <input type="search" class="form-control" placeholder="Search Task" 
+             aria-describedby="addon-wrapping" oninput="searchTask.apply(this, arguments)">
              <span class="input-group-text" id="addon-wrapping">
               <i class="fas fa-search"></i>
              </span>

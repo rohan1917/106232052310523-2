@@ -174,7 +174,7 @@ const deleteTask = (e) => {
     // console.log(removeTask);
     state.taskList = removeTask;
     
-    console.log("updated arr", state.taskList);
+    // console.log("updated arr", state.taskList);
 
     updateLocalStorage();
 // I tag was not working fine
@@ -183,11 +183,11 @@ const deleteTask = (e) => {
         return e.target.parentNode.parentNode.parentNode.parentNode.removeChild(
             e.target.parentNode.parentNode.parentNode
         );
-    }else if(type==="I"){
+    }
     return e.target.parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(
-            e.target.parentNode.parentNode.parentNode.parentNode
+          e.target.parentNode.parentNode.parentNode.parentNode
         );
-        }
+        
 //  updateLocalStorage();
 }
 
@@ -212,10 +212,10 @@ const editTask = (e) => {
     }
 
     // Uncomment following 2 lines to know abt childNodes
-    // taskTitle = parentNode.childNodes;
-    // console.log(taskTitle);
+    taskTitle = parentNode.childNodes;
+    console.log(taskTitle);
     
-    taskTitle = parentNode.childNodes[3].childNodes[3];
+    // taskTitle = parentNode.childNodes[3].childNodes[3];
     taskDescription = parentNode.childNodes[3].childNodes[5];
     taskType = parentNode.childNodes[3].childNodes[7].childNodes[1];
     // console.log(taskTitle, taskDescription, taskType);
@@ -281,4 +281,21 @@ const saveEdit = (e) => {
     submitButton.setAttribute("data-bs-toggle", "modal");
     submitButton.setAttribute("data-bs-target", "#showTask");
     submitButton.innerHTML = "Open Task";
+};
+
+
+// Search Functionality
+const searchTask = (e) =>{
+    if(!e) e = window.event;
+    
+    while(taskContents.firstChild){
+        taskContents.removeChild(taskContents.firstChild);
+    }
+
+    const resultData = state.taskList.filter(({title})=>  title.includes(e.target.value));
+
+    console.log(resultData);
+    resultData.map((cardData) => {
+        taskContents.insertAdjacentHTML("beforeend", htmlTaskContent(cardData));
+    });
 }
